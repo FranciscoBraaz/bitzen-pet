@@ -1,46 +1,33 @@
-import { toast } from "react-toastify"
-import { register } from "../../../services/authService"
-import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
-interface SignUpData {
-  name: string
+// Services
+import { login } from "../../../services/authService"
+
+interface SignInData {
   email: string
   password: string
-  password_confirmation: string
-  phone_number: string
-  document: string
 }
 
-export function useSignUp() {
+export function useSignIn() {
   const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(false)
 
-  async function handleCreateAccount({
-    name,
-    email,
-    password,
-    password_confirmation,
-    phone_number,
-    document,
-  }: SignUpData) {
+  async function handleCreateAccount({ email, password }: SignInData) {
     try {
       setIsLoading(true)
 
-      await register({
-        name,
+      await login({
         email,
         password,
-        password_confirmation,
-        phone_number,
-        document,
       })
 
-      toast.success("Conta criada com sucesso!")
       setIsLoading(false)
-      navigate("/login")
+      navigate("/")
     } catch (error) {
+      console.error(error)
       setIsLoading(false)
       if (error.response.data.data) {
         const dataError = error.response.data.data
@@ -54,7 +41,7 @@ export function useSignUp() {
         return
       }
 
-      toast.error("Erro ao criar conta, tente novamente mais tarde")
+      toast.error("Erro ao realizar login, tente novamente mais tarde")
     }
   }
 

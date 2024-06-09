@@ -17,3 +17,10 @@ export async function register({
     phone_number,
   })
 }
+
+export async function login({ email, password }) {
+  return await api.post("/api/login", {
+    email,
+    password,
+  })
+}

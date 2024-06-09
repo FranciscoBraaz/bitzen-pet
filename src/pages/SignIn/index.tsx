@@ -2,28 +2,35 @@ import React from "react"
 import { Layout, Form, Flex, Typography, Checkbox } from "antd"
 import { NavLink } from "react-router-dom"
 
+// Custom hooks
+import { useSignIn } from "./hooks/useLogin"
+
 // Components
 import { FormWrapper } from "../../components/FormWrapper"
 import { FormInput } from "../../components/FormInput"
-
-const { Content } = Layout
-const { Link } = Typography
 
 // Styles
 import "./index.scss"
 
 function SignIn() {
+  const { isLoading, handleCreateAccount } = useSignIn()
+
   return (
     <Layout>
-      <Content className="sign-in">
+      <Layout.Content className="sign-in">
         <FormWrapper
           title="Entrar na plataforma"
           description="Não tem uma conta?"
           link={{ text: "Cadastre-se gratuitamente", to: "/cadastro" }}
           formId="sign-in"
           buttonText="Entrar na plataforma"
+          isLoading={isLoading}
         >
-          <Form id="sign-in" initialValues={{ email: "", passowrd: "" }}>
+          <Form
+            id="sign-in"
+            initialValues={{ email: "", passowrd: "" }}
+            onFinish={handleCreateAccount}
+          >
             <Form.Item
               name="email"
               rules={[
@@ -54,13 +61,13 @@ function SignIn() {
               <Form.Item name="checkbox" valuePropName="checked">
                 <Checkbox>Manter conectado</Checkbox>
               </Form.Item>
-              <Link strong>
+              <Typography.Link strong>
                 <NavLink to="/esqueceu-senha">Esqueceu sua senha?</NavLink>
-              </Link>
+              </Typography.Link>
             </Flex>
           </Form>
         </FormWrapper>
-      </Content>
+      </Layout.Content>
     </Layout>
   )
 }

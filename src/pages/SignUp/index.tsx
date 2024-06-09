@@ -9,8 +9,6 @@ import { useSignUp } from "./hooks/useSignUp"
 // Styles
 import "./index.scss"
 
-const { Link } = Typography
-
 const requiredRules = [
   {
     required: true,
@@ -114,8 +112,10 @@ export function SignUp() {
               rules={requiredRules}
             >
               <Checkbox className="sign-up__checkbox">
-                Li e concordo com os <Link>Termos de uso</Link> e a{" "}
-                <Link>Política de privacidade</Link> do sistema.
+                Li e concordo com os{" "}
+                <Typography.Link>Termos de uso</Typography.Link> e a{" "}
+                <Typography.Link>Política de privacidade</Typography.Link> do
+                sistema.
               </Checkbox>
             </Form.Item>
           </Form>
