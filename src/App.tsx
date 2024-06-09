@@ -9,12 +9,14 @@ import ForgotPassword from "./pages/ForgotPassowrd"
 import { RecoveryCode } from "./pages/RecoveryCode"
 import { RedefinePassword } from "./pages/RedefinePassword"
 import { SignUp } from "./pages/SignUp"
+import { Home } from "./pages/Home"
 
 // Components
 import { RoutesLayout } from "./components/RoutesLayout"
 
 // Styles
 import "./styles/reset.css"
+import "./styles/index.scss"
 import "react-toastify/dist/ReactToastify.css"
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
           colorText: "#595959",
           colorTextHeading: "#262626",
           colorPrimaryHover: "#00A3AD",
+          fontFamily: "Poppins, sans-serif",
         },
       }}
     >
@@ -50,6 +53,10 @@ function App() {
           </Route>
           <Route path="/redefinir-senha" element={<RoutesLayout isPublic />}>
             <Route path="" element={<RedefinePassword />} />
+          </Route>
+
+          <Route path="/" element={<RoutesLayout />}>
+            <Route path="" element={<Home />} />
           </Route>
         </Routes>
       </Router>

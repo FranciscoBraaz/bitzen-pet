@@ -1,0 +1,14 @@
+.header {
+  background-color: #fff;
+  height: 86px;
+}
+
+.header__left {
+  height: 100%;
+
+  & svg {
+    width: 180px;
+    height: 44px;
+    align-self: center;
+  }
+}

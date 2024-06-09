@@ -2,6 +2,8 @@ import { Navigate, Outlet } from "react-router-dom"
 
 // Styles
 import "./index.scss"
+import { Layout } from "antd"
+import { Header } from "../Header"
 
 interface RoutesLayoutProps {
   isPublic?: boolean
@@ -12,7 +14,7 @@ export function RoutesLayout({
   isPublic = false,
   isNotFound = false,
 }: RoutesLayoutProps) {
-  const loggedUserStringified = localStorage.getItem("diversiFindUser")
+  const loggedUserStringified = localStorage.getItem("bitzen-user")
   if (isPublic) {
     if (loggedUserStringified || isNotFound) return <Navigate to="/" />
     return <Outlet />
@@ -23,11 +25,11 @@ export function RoutesLayout({
   if (isNotFound) return <Navigate to="/" />
 
   return (
-    <>
-      {/* <Header /> */}
+    <Layout>
+      <Header />
       <main className="main">
         <Outlet />
       </main>
-    </>
+    </Layout>
   )
 }

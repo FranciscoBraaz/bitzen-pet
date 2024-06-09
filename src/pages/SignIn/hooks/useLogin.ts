@@ -19,11 +19,12 @@ export function useSignIn() {
     try {
       setIsLoading(true)
 
-      await login({
+      const data = await login({
         email,
         password,
       })
 
+      localStorage.setItem("bitzen-user", JSON.stringify(data))
       setIsLoading(false)
       navigate("/")
     } catch (error) {
