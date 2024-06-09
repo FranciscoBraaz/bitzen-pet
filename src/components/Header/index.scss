@@ -1,14 +1,40 @@
+@import "../../styles/variables.scss";
+
 .header {
   background-color: #fff;
-  height: 86px;
+  padding: 0px;
 }
 
-.header__left {
-  height: 100%;
+.header__content {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 86px;
 
   & svg {
     width: 180px;
     height: 44px;
     align-self: center;
+  }
+}
+
+.header__divider {
+  width: 100%;
+  height: 1px;
+  background-color: $neutral-200;
+}
+
+.header__page-title {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 86px;
+  display: flex;
+  align-items: center;
+
+  & > h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: $neutral-900;
   }
 }

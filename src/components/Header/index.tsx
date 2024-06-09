@@ -18,13 +18,17 @@ const tabs = [
 export function Header() {
   return (
     <Layout.Header className="header">
-      <Flex className="header__left" justify="space-between" align="center">
+      <Flex className="header__content" justify="space-between" align="center">
         <Flex gap={72}>
           <LogoSvg />
           <CustomTabs activeTab="home" items={tabs} onChange={() => {}} />
         </Flex>
         <CustomDropdown />
       </Flex>
+      <div className="header__divider" />
+      <div className="header__page-title">
+        <h1>Seus pets</h1>
+      </div>
     </Layout.Header>
   )
 }
