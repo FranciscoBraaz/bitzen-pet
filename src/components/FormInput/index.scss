@@ -1,0 +1,16 @@
+.form-input {
+  & span {
+    font-weight: 500;
+  }
+
+  & input {
+    height: 49px;
+    border-radius: 8px;
+  }
+}
+
+.form-input__password {
+  & input {
+    height: 39px;
+  }
+}

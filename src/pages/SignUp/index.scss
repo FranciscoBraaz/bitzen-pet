@@ -1,0 +1,26 @@
+.sign-up {
+  background-color: #fff;
+  width: 100%;
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.sign-up__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up__flex-container {
+  & .ant-form-item {
+    flex: 1;
+  }
+}
+
+.sign-up__checkbox {
+  & a {
+    text-decoration: underline;
+  }
+}

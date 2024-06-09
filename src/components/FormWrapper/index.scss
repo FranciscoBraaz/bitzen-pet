@@ -1,0 +1,37 @@
+.form-wrapper {
+  background-color: #fff;
+  padding: 64px;
+  border-radius: 12px;
+  width: 100%;
+
+  & > header {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    & > svg {
+      width: 185px;
+      height: 52px;
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+.form-wrapper__go-back {
+  width: fit-content;
+  margin-bottom: 24px;
+  padding: 0;
+  color: #00b8c4;
+
+  &:hover {
+    color: #00b8c4 !important;
+    background-color: transparent !important;
+  }
+
+  & svg > path {
+    stroke: #00b8c4;
+  }
+}
