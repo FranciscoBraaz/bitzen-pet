@@ -6,6 +6,7 @@ import LogoSvg from "../../assets/logo-full.svg?react"
 
 // Styles
 import "./index.scss"
+import { CustomDropdown } from "../CustomDropdown"
 
 const tabs = [
   {
@@ -22,6 +23,7 @@ export function Header() {
           <LogoSvg />
           <CustomTabs activeTab="home" items={tabs} onChange={() => {}} />
         </Flex>
+        <CustomDropdown />
       </Flex>
     </Layout.Header>
   )
