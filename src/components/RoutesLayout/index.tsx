@@ -27,9 +27,9 @@ export function RoutesLayout({
   return (
     <Layout>
       <Header />
-      <main className="main">
+      <Layout.Content className="main">
         <Outlet />
-      </main>
+      </Layout.Content>
     </Layout>
   )
 }

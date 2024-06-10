@@ -1,0 +1,16 @@
+.home {
+  width: 100%;
+  min-height: calc(100vh - 173px);
+  background-color: #f4f4f4;
+}
+
+.home__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 16px;
+
+  & > section {
+    width: 100%;
+  }
+}

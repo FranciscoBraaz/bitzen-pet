@@ -8,7 +8,7 @@ import LogoSvg from "../../assets/logo-full.svg?react"
 import ArrowLeft from "../../assets/arrow-left.svg?react"
 
 // Components
-import { FormButton } from "../Button"
+import { FormButton } from "../FormButton"
 
 // Styles
 import "./index.scss"
