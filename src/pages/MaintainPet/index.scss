@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .maintain-pet {
   width: 100%;
   min-height: calc(100vh - 173px);
@@ -14,6 +16,14 @@
     width: 100%;
   }
 
+  & > .ant-image {
+    height: fit-content;
+
+    & > img {
+      width: 336px;
+    }
+  }
+
   & form {
     padding: 40px 44px;
     background-color: #fff;
@@ -22,5 +32,44 @@
     & > div {
       max-width: 50%;
     }
+  }
+}
+
+.maintain-pet__select-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+
+  background-color: #ededed;
+  height: 280px;
+  width: 100%;
+  max-width: 336px;
+  border: 1px dashed $neutral-400;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+
+  & > p {
+    color: $neutral-700;
+    font-size: 14px;
+    line-height: 23.8px;
+    text-align: center;
+  }
+
+  & > svg {
+    width: 48px;
+    height: 48px;
+
+    & path {
+      stroke: $neutral-700;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .maintain-pet__container {
+    flex-direction: column;
   }
 }
