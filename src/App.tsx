@@ -18,6 +18,7 @@ import { RoutesLayout } from "./components/RoutesLayout"
 import "./styles/reset.css"
 import "./styles/index.scss"
 import "react-toastify/dist/ReactToastify.css"
+import { MaintainPet } from "./pages/MaintainPet"
 
 function App() {
   return (
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route path="/detalhes" element={<RoutesLayout />}>
             <Route path="" element={<PetDetails />} />
+          </Route>
+          <Route path="/cadastrar-pet" element={<RoutesLayout />}>
+            <Route path="" element={<MaintainPet />} />
           </Route>
         </Routes>
       </Router>

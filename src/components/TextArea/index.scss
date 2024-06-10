@@ -1,0 +1,9 @@
+.text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  & > p {
+    font-weight: 500;
+  }
+}

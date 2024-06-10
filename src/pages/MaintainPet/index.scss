@@ -1,0 +1,26 @@
+.maintain-pet {
+  width: 100%;
+  min-height: calc(100vh - 173px);
+  background-color: #f4f4f4;
+}
+
+.maintain-pet__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  & .ant-flex {
+    width: 100%;
+  }
+
+  & form {
+    padding: 40px 44px;
+    background-color: #fff;
+    border-radius: 8px;
+
+    & > div {
+      max-width: 50%;
+    }
+  }
+}

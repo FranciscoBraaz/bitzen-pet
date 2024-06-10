@@ -1,0 +1,14 @@
+.custom-date-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  & > p {
+    font-weight: 500;
+  }
+
+  & .ant-picker {
+    height: 49px;
+    width: 100%;
+  }
+}
