@@ -1,0 +1,63 @@
+@import "../../styles/variables.scss";
+
+.pet-details {
+  width: 100%;
+  min-height: calc(100vh - 173px);
+  background-color: #f4f4f4;
+}
+
+.pet-details__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 24px;
+
+  & .ant-flex {
+    width: 100%;
+  }
+}
+
+.pet-details__edit {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  width: 100%;
+  max-width: 213px;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+
+    & path {
+      stroke: #fff;
+    }
+  }
+}
+
+.pet-details__info-container {
+  & img {
+    border-radius: 8px;
+  }
+}
+
+.pet-details__info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 48px 24px;
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.pet-details__info {
+  & > p:first-child {
+    color: $neutral-800;
+    font-weight: 600;
+  }
+
+  & > p:last-child {
+    color: $neutral-600;
+  }
+}

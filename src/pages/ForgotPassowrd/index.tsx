@@ -1,4 +1,3 @@
-import React from "react"
 import { FormInput } from "../../components/FormInput"
 import { Form, Layout } from "antd"
 import { FormWrapper } from "../../components/FormWrapper"
@@ -9,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 const { Content } = Layout
 
-function ForgotPassword() {
+export function ForgotPassword() {
   const navigate = useNavigate()
 
   function handleSubmit() {
@@ -48,5 +47,3 @@ function ForgotPassword() {
     </Layout>
   )
 }
-
-export default ForgotPassword

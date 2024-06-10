@@ -8,9 +8,34 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: 32px 24px;
+}
 
-  & > section {
-    width: 100%;
+.home__actions {
+  width: 100%;
+}
+
+.home__actions__new-pet {
+  display: flex;
+  align-items: center;
+  height: 42px;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+
+    & path {
+      stroke: #fff;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .home__actions {
+    flex-direction: column;
+  }
+
+  .home__actions__new-pet {
+    width: fit-content;
   }
 }

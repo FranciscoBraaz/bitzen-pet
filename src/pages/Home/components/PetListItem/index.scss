@@ -1,0 +1,63 @@
+@import "../../../../styles/variables.scss";
+
+.pet-list-item {
+  width: 100%;
+  padding: 0px 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  align-items: center;
+
+  & > div:first-child {
+    justify-self: flex-start;
+  }
+
+  & > div > span {
+    display: none;
+  }
+}
+
+.pet-list-item__container-buttons {
+  & button:first-child {
+    & svg {
+      width: 18px;
+      height: 18px;
+      & path {
+        stroke: $neutral-600;
+      }
+    }
+  }
+
+  & button:last-child {
+    & svg {
+      width: 18px;
+      height: 18px;
+
+      & path {
+        stroke: #e93939;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .pet-list-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+    row-gap: 16px;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    & > div > span {
+      display: inline;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+  }
+}

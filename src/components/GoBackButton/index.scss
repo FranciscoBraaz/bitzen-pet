@@ -1,0 +1,18 @@
+@import "../../styles/variables.scss";
+
+.go-back-button {
+  width: fit-content;
+  margin-bottom: 24px;
+  padding: 0;
+  color: $primary;
+  font-weight: 600;
+
+  &:hover {
+    color: $primary !important;
+    background-color: transparent !important;
+  }
+
+  & svg > path {
+    stroke: $primary;
+  }
+}

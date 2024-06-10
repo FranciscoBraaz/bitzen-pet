@@ -1,5 +1,6 @@
 import React from "react"
 import { Button, Flex, Typography } from "antd"
+import { NavLink, useNavigate } from "react-router-dom"
 
 const { Title, Text, Link } = Typography
 
@@ -12,7 +13,6 @@ import { FormButton } from "../FormButton"
 
 // Styles
 import "./index.scss"
-import { NavLink, useNavigate } from "react-router-dom"
 
 type LinkProps = {
   text: string

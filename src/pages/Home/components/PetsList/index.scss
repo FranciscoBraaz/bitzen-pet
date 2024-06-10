@@ -1,0 +1,43 @@
+.pets-list {
+  width: 100%;
+  padding: 24px 0px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.pets-list__header {
+  padding: 0 24px;
+  height: 42px;
+
+  & > h2 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+}
+
+.pets-list__columns-title {
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  align-items: center;
+  background-color: #fafafa;
+  height: 60px;
+
+  & > p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+
+    &:first-child {
+      justify-self: flex-start;
+    }
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .pets-list__columns-title {
+    display: none;
+  }
+}
