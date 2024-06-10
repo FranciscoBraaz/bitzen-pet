@@ -1,9 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom"
+import { Layout } from "antd"
+
+// Components
+import { Header } from "../Header"
 
 // Styles
 import "./index.scss"
-import { Layout } from "antd"
-import { Header } from "../Header"
 
 interface RoutesLayoutProps {
   isPublic?: boolean
@@ -14,13 +16,16 @@ export function RoutesLayout({
   isPublic = false,
   isNotFound = false,
 }: RoutesLayoutProps) {
-  const loggedUserStringified = localStorage.getItem("bitzen-user")
+  const loggedUserLocalStorage = localStorage.getItem("bitzen-user")
+  const loggedUserSessionStore = sessionStorage.getItem("bitzen-user")
+  const userIsLogged = loggedUserLocalStorage || loggedUserSessionStore
+
   if (isPublic) {
-    if (loggedUserStringified || isNotFound) return <Navigate to="/" />
+    if (userIsLogged || isNotFound) return <Navigate to="/" />
     return <Outlet />
   }
 
-  if (!loggedUserStringified || isNotFound) return <Navigate to="/login" />
+  if (!userIsLogged || isNotFound) return <Navigate to="/login" />
 
   if (isNotFound) return <Navigate to="/" />
 

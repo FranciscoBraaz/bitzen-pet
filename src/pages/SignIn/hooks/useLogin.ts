@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
+import { AxiosError } from "axios"
 
 // Services
 import { login } from "../../../services/authService"
@@ -8,6 +9,7 @@ import { login } from "../../../services/authService"
 interface SignInData {
   email: string
   password: string
+  remember: boolean
 }
 
 export function useSignIn() {
@@ -15,7 +17,7 @@ export function useSignIn() {
 
   const [isLoading, setIsLoading] = useState(false)
 
-  async function handleCreateAccount({ email, password }: SignInData) {
+  async function handleSignIn({ email, password, remember }: SignInData) {
     try {
       setIsLoading(true)
 
@@ -24,22 +26,28 @@ export function useSignIn() {
         password,
       })
 
-      localStorage.setItem("bitzen-user", JSON.stringify(data))
+      if (remember) {
+        localStorage.setItem("bitzen-user", JSON.stringify(data))
+      } else {
+        sessionStorage.setItem("bitzen-user", JSON.stringify(data))
+      }
+
       setIsLoading(false)
       navigate("/")
     } catch (error) {
-      console.error(error)
       setIsLoading(false)
-      if (error.response.data.data) {
-        const dataError = error.response.data.data
-        const objKeys = Object.keys(dataError)
-        toast.error(dataError[objKeys[0]][0])
-        return
-      }
+      if (error instanceof AxiosError) {
+        if (error?.response?.data.data) {
+          const dataError = error.response.data.data
+          const objKeys = Object.keys(dataError)
+          toast.error(dataError[objKeys[0]][0])
+          return
+        }
 
-      if (error.response.data.message) {
-        toast.error(error.response.data.message)
-        return
+        if (error?.response?.data.message) {
+          toast.error(error.response.data.message)
+          return
+        }
       }
 
       toast.error("Erro ao realizar login, tente novamente mais tarde")
@@ -48,6 +56,6 @@ export function useSignIn() {
 
   return {
     isLoading,
-    handleCreateAccount,
+    handleSignIn,
   }
 }

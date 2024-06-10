@@ -2,7 +2,7 @@ import React from "react"
 import { Button, Flex, Typography } from "antd"
 import { NavLink, useNavigate } from "react-router-dom"
 
-const { Title, Text, Link } = Typography
+const { Title, Text } = Typography
 
 // Assets
 import LogoSvg from "../../assets/logo-full.svg?react"
@@ -74,10 +74,7 @@ export function FormWrapper({
           <Title>{title}</Title>
           {link ? (
             <Text>
-              {description}{" "}
-              <Link strong>
-                <NavLink to={link.to}>{link.text}</NavLink>
-              </Link>
+              {description} <NavLink to={link.to}>{link.text}</NavLink>
             </Text>
           ) : (
             <Text>{description}</Text>

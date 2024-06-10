@@ -1,7 +1,10 @@
-import { toast } from "react-toastify"
-import { register } from "../../../services/authService"
-import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
+import { AxiosError } from "axios"
+
+// Services
+import { register } from "../../../services/authService"
 
 interface SignUpData {
   name: string
@@ -42,16 +45,18 @@ export function useSignUp() {
       navigate("/login")
     } catch (error) {
       setIsLoading(false)
-      if (error.response.data.data) {
-        const dataError = error.response.data.data
-        const objKeys = Object.keys(dataError)
-        toast.error(dataError[objKeys[0]][0])
-        return
-      }
+      if (error instanceof AxiosError) {
+        if (error?.response?.data.data) {
+          const dataError = error.response.data.data
+          const objKeys = Object.keys(dataError)
+          toast.error(dataError[objKeys[0]][0])
+          return
+        }
 
-      if (error.response.data.message) {
-        toast.error(error.response.data.message)
-        return
+        if (error?.response?.data.message) {
+          toast.error(error.response.data.message)
+          return
+        }
       }
 
       toast.error("Erro ao criar conta, tente novamente mais tarde")

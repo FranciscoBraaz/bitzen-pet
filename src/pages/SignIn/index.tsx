@@ -1,5 +1,4 @@
-import React from "react"
-import { Layout, Form, Flex, Typography, Checkbox } from "antd"
+import { Layout, Form, Flex, Checkbox } from "antd"
 import { NavLink } from "react-router-dom"
 
 // Custom hooks
@@ -13,7 +12,7 @@ import { FormInput } from "../../components/FormInput"
 import "./index.scss"
 
 function SignIn() {
-  const { isLoading, handleCreateAccount } = useSignIn()
+  const { isLoading, handleSignIn } = useSignIn()
 
   return (
     <Layout>
@@ -28,8 +27,8 @@ function SignIn() {
         >
           <Form
             id="sign-in"
-            initialValues={{ email: "", passowrd: "" }}
-            onFinish={handleCreateAccount}
+            initialValues={{ email: "", passowrd: "", remember: true }}
+            onFinish={handleSignIn}
           >
             <Form.Item
               name="email"
@@ -58,12 +57,10 @@ function SignIn() {
               />
             </Form.Item>
             <Flex justify="space-between">
-              <Form.Item name="checkbox" valuePropName="checked">
-                <Checkbox>Manter conectado</Checkbox>
+              <Form.Item name="remember" valuePropName="checked">
+                <Checkbox defaultChecked>Manter conectado</Checkbox>
               </Form.Item>
-              <Typography.Link strong>
-                <NavLink to="/esqueceu-senha">Esqueceu sua senha?</NavLink>
-              </Typography.Link>
+              <NavLink to="/esqueceu-senha">Esqueceu sua senha?</NavLink>
             </Flex>
           </Form>
         </FormWrapper>
