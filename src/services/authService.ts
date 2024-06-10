@@ -40,3 +40,7 @@ export async function login({ email, password }: LoginData) {
 
   return response.data
 }
+
+export async function forgotPassword({ email }: { email: string }) {
+  return await api.post("/api/forgot-password", { email })
+}
