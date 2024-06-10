@@ -1,6 +1,10 @@
+import { useEffect } from "react"
 import { ConfigProvider } from "antd"
 import { ToastContainer } from "react-toastify"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
+// Services
+import { api } from "./services/api"
 
 // Pages
 import SignIn from "./pages/SignIn"
@@ -10,6 +14,8 @@ import { RedefinePassword } from "./pages/RedefinePassword"
 import { SignUp } from "./pages/SignUp"
 import { Home } from "./pages/Home"
 import { PetDetails } from "./pages/PetDetails"
+import { MaintainPet } from "./pages/MaintainPet"
+import { Profile } from "./pages/Profile"
 
 // Components
 import { RoutesLayout } from "./components/RoutesLayout"
@@ -18,10 +24,21 @@ import { RoutesLayout } from "./components/RoutesLayout"
 import "./styles/reset.css"
 import "./styles/index.scss"
 import "react-toastify/dist/ReactToastify.css"
-import { MaintainPet } from "./pages/MaintainPet"
-import { Profile } from "./pages/Profile"
 
 function App() {
+  useEffect(() => {
+    const loggedUser =
+      localStorage.getItem("bitzen-user") ||
+      sessionStorage.getItem("bitzen-user")
+
+    if (loggedUser) {
+      const loggedUserParsed = JSON.parse(loggedUser)
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${loggedUserParsed.token}`
+    }
+  }, [])
+
   return (
     <ConfigProvider
       theme={{

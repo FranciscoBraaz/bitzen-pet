@@ -1,4 +1,3 @@
-import React from "react"
 import { Checkbox, Flex, Form, Layout, Typography } from "antd"
 import { FormWrapper } from "../../components/FormWrapper"
 import { FormInput } from "../../components/FormInput"

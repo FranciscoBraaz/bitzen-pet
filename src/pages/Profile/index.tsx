@@ -1,6 +1,9 @@
 import { Button, Flex, Form, Typography } from "antd"
 import { FormInput } from "../../components/FormInput"
 
+// Custom hooks
+import { useLogout } from "./hooks/useLogout"
+
 // Assets
 import Edit from "../../assets/edit.svg?react"
 import Logout from "../../assets/logout.svg?react"
@@ -9,6 +12,8 @@ import Logout from "../../assets/logout.svg?react"
 import "./index.scss"
 
 export function Profile() {
+  const { loading, handleLogout } = useLogout()
+
   return (
     <div className="profile">
       <Flex className="profile__container" vertical gap={32} align="center">
@@ -48,6 +53,8 @@ export function Profile() {
             type="text"
             icon={<Logout />}
             className="profile__button-action profile__button-action--logout"
+            loading={loading}
+            onClick={handleLogout}
           >
             Sair da minha conta
           </Button>

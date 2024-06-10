@@ -5,6 +5,7 @@ import { AxiosError } from "axios"
 
 // Services
 import { login } from "../../../services/authService"
+import { api } from "../../../services/api"
 
 interface SignInData {
   email: string
@@ -21,7 +22,7 @@ export function useSignIn() {
     try {
       setIsLoading(true)
 
-      const data = await login({
+      const { data } = await login({
         email,
         password,
       })
@@ -31,8 +32,10 @@ export function useSignIn() {
       } else {
         sessionStorage.setItem("bitzen-user", JSON.stringify(data))
       }
-
+      console.log(data)
+      api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`
       setIsLoading(false)
+
       navigate("/")
     } catch (error) {
       setIsLoading(false)
