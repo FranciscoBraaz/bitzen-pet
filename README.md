@@ -19,7 +19,7 @@ A aplicação desenvolvida com o objetivo de praticar os conhecimentos em SOLID 
     git clone https://github.com/FranciscoBraaz/bitzen-pet.git
     
     # Navegue para a pasta raíz com:
-    cd bitzen
+    cd bitzen-pet
     
    #### Iniciando aplicação
    
