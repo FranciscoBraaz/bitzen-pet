@@ -12,7 +12,7 @@ const options = [
   },
 ]
 
-export function CustomDropdown() {
+export function CustomDropdown({ name }: { name: string | undefined }) {
   const navigate = useNavigate()
 
   return (
@@ -40,7 +40,7 @@ export function CustomDropdown() {
             }}
             size="large"
           >
-            AM
+            {name?.toLocaleUpperCase()}
           </Avatar>
           <CaretDownOutlined
             style={{ width: 16, height: 16, color: "#8C8C8C" }}

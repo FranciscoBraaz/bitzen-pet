@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom"
 // Assets
 import Logo from "../../assets/logo.svg?react"
 
+// Custom hooks
+import { useHeader } from "./hooks/useHeader"
+import { useAuth } from "../../hooks/useAuth"
+
 // Components
 import { CustomDropdown } from "../CustomDropdown"
 
 // Styles
 import "./index.scss"
-import { useHeader } from "./hooks/useHeader"
 
 const tabs = [
   {
@@ -24,6 +27,7 @@ export function Header() {
   const navigate = useNavigate()
   const pathname = window.location.pathname
   const { pageTitle, handleTabChange } = useHeader()
+  const { userData } = useAuth()
 
   return (
     <Layout.Header className="header">
@@ -42,7 +46,7 @@ export function Header() {
             onChange={handleTabChange}
           />
         </Flex>
-        <CustomDropdown />
+        <CustomDropdown name={userData?.user.name.slice(0, 2)} />
       </Flex>
       <div className="header__divider" />
       <div className="header__page-title">

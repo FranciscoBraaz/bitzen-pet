@@ -6,6 +6,7 @@ import { AxiosError } from "axios"
 // Services
 import { login } from "../../../services/authService"
 import { api } from "../../../services/api"
+import { useAuth } from "../../../hooks/useAuth"
 
 interface SignInData {
   email: string
@@ -15,6 +16,7 @@ interface SignInData {
 
 export function useSignIn() {
   const navigate = useNavigate()
+  const { setUserData } = useAuth()
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -32,7 +34,8 @@ export function useSignIn() {
       } else {
         sessionStorage.setItem("bitzen-user", JSON.stringify(data))
       }
-      console.log(data)
+
+      setUserData(data)
       api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`
       setIsLoading(false)
 
