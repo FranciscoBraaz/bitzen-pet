@@ -40,6 +40,14 @@
   }
 }
 
+.ant-list .ant-list-item {
+  padding: 14px 0px;
+}
+
+.ant-list-split .ant-list-item {
+  border: none;
+}
+
 @media screen and (max-width: 960px) {
   .pet-list-item {
     display: grid;

@@ -1,7 +1,12 @@
-import { Button, Flex } from "antd"
+import { Button, Flex, Typography } from "antd"
 
 // Assets
 import PlusCircle from "../../assets/plus-circle.svg?react"
+
+// Custom hooks
+import { useAuth } from "../../hooks/useAuth"
+import { useGetPets } from "./hooks/useGetPets"
+import useSearch from "./hooks/useSearch"
 
 // Components
 import { SearchBar } from "./components/SearchBar"
@@ -11,11 +16,15 @@ import { PetsList } from "./components/PetsList"
 import "./index.scss"
 
 export function Home() {
+  const { userData } = useAuth()
+  const { search, handleSearch } = useSearch()
+  const { data, isLoading, isError } = useGetPets(search, userData?.token)
+
   return (
     <div className="home">
       <Flex className="home__container" vertical gap={40}>
         <Flex justify="space-between" gap={16} className="home__actions">
-          <SearchBar />
+          <SearchBar handleSearch={handleSearch} />
           <Button
             type="primary"
             icon={<PlusCircle />}
@@ -25,7 +34,10 @@ export function Home() {
             Cadastrar pet
           </Button>
         </Flex>
-        <PetsList />
+        {isError && (
+          <Typography.Text type="danger">Erro ao buscar pets</Typography.Text>
+        )}
+        <PetsList data={data} isLoading={isLoading} />
       </Flex>
     </div>
   )

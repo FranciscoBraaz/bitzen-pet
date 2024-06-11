@@ -1,27 +1,25 @@
 import { List } from "antd"
+
+// Components
 import { PetListItem } from "../PetListItem"
+import { SkeletonList } from "../SkeletonList"
 
 // Styles
 import "./index.scss"
 
-const data = [
-  {
-    avatar:
-      "https://images.pexels.com/photos/9160637/pexels-photo-9160637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    name: "Leona",
-    age: "8 meses",
-    color: "Rajado",
-  },
-  {
-    avatar:
-      "https://images.pexels.com/photos/1080953/pexels-photo-1080953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    name: "Leona",
-    age: "8 meses",
-    color: "Rajado",
-  },
-]
+interface DataProps {
+  id: string
+  name: string
+  age: string
+  color: string
+  image_url: string
+}
+interface PetsListProps {
+  isLoading?: boolean
+  data: DataProps[] | undefined
+}
 
-export function PetsList() {
+export function PetsList({ data, isLoading = false }: PetsListProps) {
   return (
     <section className="pets-list">
       <div className="pets-list__header">
@@ -34,20 +32,28 @@ export function PetsList() {
         <p>Cor</p>
         <p></p>
       </div>
-      <List
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={(item) => (
-          <List.Item>
-            <PetListItem
-              avatar={item.avatar}
-              name={item.name}
-              age={item.age}
-              color={item.color}
-            />
-          </List.Item>
-        )}
-      />
+      {isLoading && <SkeletonList />}
+      {!isLoading && (
+        <List
+          itemLayout="horizontal"
+          dataSource={data}
+          renderItem={(item, index) => (
+            <List.Item
+              style={{
+                backgroundColor:
+                  (index + 1) % 2 === 0 ? "#fafafa" : "transparent",
+              }}
+            >
+              <PetListItem
+                avatar={item.image_url}
+                name={item.name}
+                age={item.age ?? "-"}
+                color={item.color ?? "-"}
+              />
+            </List.Item>
+          )}
+        />
+      )}
     </section>
   )
 }

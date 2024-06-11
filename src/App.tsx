@@ -1,10 +1,9 @@
-import { useEffect } from "react"
 import { ConfigProvider } from "antd"
 import { ToastContainer } from "react-toastify"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-// Services
-import { api } from "./services/api"
+// Contexts
+import { AuthProvider } from "./contexts/authContext"
 
 // Pages
 import SignIn from "./pages/SignIn"
@@ -24,21 +23,9 @@ import { RoutesLayout } from "./components/RoutesLayout"
 import "./styles/reset.css"
 import "./styles/index.scss"
 import "react-toastify/dist/ReactToastify.css"
+import "react-loading-skeleton/dist/skeleton.css"
 
 function App() {
-  useEffect(() => {
-    const loggedUser =
-      localStorage.getItem("bitzen-user") ||
-      sessionStorage.getItem("bitzen-user")
-
-    if (loggedUser) {
-      const loggedUserParsed = JSON.parse(loggedUser)
-      api.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${loggedUserParsed.token}`
-    }
-  }, [])
-
   return (
     <ConfigProvider
       theme={{
@@ -52,42 +39,44 @@ function App() {
         },
       }}
     >
-      <ToastContainer theme="colored" draggable={false} />
-      <Router>
-        <Routes>
-          <Route path="/login" element={<RoutesLayout isPublic />}>
-            <Route path="" element={<SignIn />} />
-          </Route>
-          <Route path="/cadastro" element={<RoutesLayout isPublic />}>
-            <Route path="" element={<SignUp />} />
-          </Route>
-          <Route path="/esqueceu-senha" element={<RoutesLayout isPublic />}>
-            <Route path="" element={<ForgotPassword />} />
-          </Route>
-          <Route
-            path="/codigo-de-recuperacao"
-            element={<RoutesLayout isPublic />}
-          >
-            <Route path="" element={<RecoveryCode />} />
-          </Route>
-          <Route path="/redefinir-senha" element={<RoutesLayout isPublic />}>
-            <Route path="" element={<RedefinePassword />} />
-          </Route>
+      <AuthProvider>
+        <ToastContainer theme="colored" draggable={false} />
+        <Router>
+          <Routes>
+            <Route path="/login" element={<RoutesLayout isPublic />}>
+              <Route path="" element={<SignIn />} />
+            </Route>
+            <Route path="/cadastro" element={<RoutesLayout isPublic />}>
+              <Route path="" element={<SignUp />} />
+            </Route>
+            <Route path="/esqueceu-senha" element={<RoutesLayout isPublic />}>
+              <Route path="" element={<ForgotPassword />} />
+            </Route>
+            <Route
+              path="/codigo-de-recuperacao"
+              element={<RoutesLayout isPublic />}
+            >
+              <Route path="" element={<RecoveryCode />} />
+            </Route>
+            <Route path="/redefinir-senha" element={<RoutesLayout isPublic />}>
+              <Route path="" element={<RedefinePassword />} />
+            </Route>
 
-          <Route path="/" element={<RoutesLayout />}>
-            <Route path="" element={<Home />} />
-          </Route>
-          <Route path="/detalhes" element={<RoutesLayout />}>
-            <Route path="" element={<PetDetails />} />
-          </Route>
-          <Route path="/cadastrar-pet" element={<RoutesLayout />}>
-            <Route path="" element={<MaintainPet />} />
-          </Route>
-          <Route path="/perfil" element={<RoutesLayout />}>
-            <Route path="" element={<Profile />} />
-          </Route>
-        </Routes>
-      </Router>
+            <Route path="/" element={<RoutesLayout />}>
+              <Route path="" element={<Home />} />
+            </Route>
+            <Route path="/detalhes" element={<RoutesLayout />}>
+              <Route path="" element={<PetDetails />} />
+            </Route>
+            <Route path="/cadastrar-pet" element={<RoutesLayout />}>
+              <Route path="" element={<MaintainPet />} />
+            </Route>
+            <Route path="/perfil" element={<RoutesLayout />}>
+              <Route path="" element={<Profile />} />
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </ConfigProvider>
   )
 }
