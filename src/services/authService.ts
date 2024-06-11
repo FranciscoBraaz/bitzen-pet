@@ -45,6 +45,16 @@ export async function forgotPassword({ email }: { email: string }) {
   return await api.post("/api/forgot-password", { email })
 }
 
+export async function updateUser({
+  name,
+  email,
+}: {
+  name: string
+  email: string
+}) {
+  return await api.put("/api/user", { name, email })
+}
+
 export async function logout() {
   return await api.post("/api/logout")
 }

@@ -75,7 +75,7 @@ export function MaintainPet() {
               initialValues={{
                 name: data?.name,
                 color: data?.color,
-                birthdate: dayjs(data?.birthdate),
+                birthdate: data?.birthdate ? dayjs(data?.birthdate) : undefined,
                 description: data?.description,
               }}
             >

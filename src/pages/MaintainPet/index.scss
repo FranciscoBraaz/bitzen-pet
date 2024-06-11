@@ -80,5 +80,11 @@
 @media screen and (max-width: 960px) {
   .maintain-pet__container {
     flex-direction: column;
+
+    & form {
+      & > div {
+        max-width: 100%;
+      }
+    }
   }
 }

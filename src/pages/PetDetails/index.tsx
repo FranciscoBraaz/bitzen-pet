@@ -26,7 +26,7 @@ export function PetDetails() {
   return (
     <div className="pet-details">
       <Flex vertical className="pet-details__container" gap={50}>
-        <Flex justify="space-between">
+        <Flex justify="space-between" className="pet-details__actions">
           <GoBackButton />
           <Button
             icon={<EditSvg />}

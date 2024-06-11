@@ -9,7 +9,7 @@ type TabItem = {
 }
 
 interface CustomTabs {
-  activeTab: string
+  activeTab: string | undefined
   items: TabItem[]
   onChange: (key: string) => void
 }

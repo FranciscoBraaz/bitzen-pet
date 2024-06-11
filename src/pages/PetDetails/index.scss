@@ -11,7 +11,6 @@
 
   & .ant-image-img {
     max-width: 336px;
-    width: unset;
   }
 }
 
@@ -73,6 +72,19 @@
 
 @media screen and (max-width: 960px) {
   .pet-details__info-container {
+    flex-direction: column;
+  }
+
+  .pet-details__info-content {
+    .ant-flex {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pet-details__actions {
     flex-direction: column;
   }
 }

@@ -1,33 +1,52 @@
 import { Flex, Layout } from "antd"
 import { CustomTabs } from "../CustomTabs"
+import { useNavigate } from "react-router-dom"
 
 // Assets
-import LogoSvg from "../../assets/logo-full.svg?react"
+import Logo from "../../assets/logo.svg?react"
+
+// Components
+import { CustomDropdown } from "../CustomDropdown"
 
 // Styles
 import "./index.scss"
-import { CustomDropdown } from "../CustomDropdown"
+import { useHeader } from "./hooks/useHeader"
 
 const tabs = [
   {
     key: "home",
+    path: "/",
     label: "Início",
   },
 ]
 
 export function Header() {
+  const navigate = useNavigate()
+  const pathname = window.location.pathname
+  const { pageTitle, handleTabChange } = useHeader()
+
   return (
     <Layout.Header className="header">
       <Flex className="header__content" justify="space-between" align="center">
         <Flex gap={72}>
-          <LogoSvg />
-          <CustomTabs activeTab="home" items={tabs} onChange={() => {}} />
+          <button
+            className="header_logo-container"
+            onClick={() => navigate("/")}
+          >
+            <Logo />
+            <p>Bitzen Pet</p>
+          </button>
+          <CustomTabs
+            activeTab={pathname === "/" ? "home" : undefined}
+            items={tabs}
+            onChange={handleTabChange}
+          />
         </Flex>
         <CustomDropdown />
       </Flex>
       <div className="header__divider" />
       <div className="header__page-title">
-        <h1>Seus pets</h1>
+        <h1>{pageTitle}</h1>
       </div>
     </Layout.Header>
   )
