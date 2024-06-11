@@ -9,13 +9,20 @@ import "./index.scss"
 import { useNavigate } from "react-router-dom"
 
 interface PetListItemProps {
+  id: string
   avatar: string
   name: string
   age: string
   color: string
 }
 
-export function PetListItem({ avatar, name, age, color }: PetListItemProps) {
+export function PetListItem({
+  id,
+  avatar,
+  name,
+  age,
+  color,
+}: PetListItemProps) {
   const navigate = useNavigate()
 
   return (
@@ -46,7 +53,7 @@ export function PetListItem({ avatar, name, age, color }: PetListItemProps) {
           <Button
             type="default"
             icon={<EyeSvg />}
-            onClick={() => navigate("/detalhes")}
+            onClick={() => navigate(`/detalhes/${id}`)}
           />
           <Button type="default" icon={<TrashSvg />} />
         </Flex>

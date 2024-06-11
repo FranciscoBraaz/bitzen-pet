@@ -45,6 +45,7 @@ export function PetsList({ data, isLoading = false }: PetsListProps) {
               }}
             >
               <PetListItem
+                id={item.id}
                 avatar={item.image_url}
                 name={item.name}
                 age={item.age ?? "-"}

@@ -4,6 +4,15 @@
   width: 100%;
   min-height: calc(100vh - 173px);
   background-color: #f4f4f4;
+
+  & .ant-image {
+    height: fit-content;
+  }
+
+  & .ant-image-img {
+    max-width: 336px;
+    width: unset;
+  }
 }
 
 .pet-details__container {
@@ -43,9 +52,9 @@
 .pet-details__info-content {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 56px;
   padding: 48px 24px;
-  width: 100%;
   height: fit-content;
   background-color: #fff;
   border-radius: 8px;
@@ -59,5 +68,11 @@
 
   & > p:last-child {
     color: $neutral-600;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .pet-details__info-container {
+    flex-direction: column;
   }
 }

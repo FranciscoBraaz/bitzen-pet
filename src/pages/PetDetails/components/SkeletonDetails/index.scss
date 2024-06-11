@@ -1,0 +1,27 @@
+.skeleton-details {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+}
+
+.skeleton-details__img {
+  max-width: 336px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.skeleton-details__info {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 48px 24px;
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.skeleton-details__info__top {
+  display: flex;
+  justify-content: space-between;
+}

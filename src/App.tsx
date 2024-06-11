@@ -65,10 +65,13 @@ function App() {
             <Route path="/" element={<RoutesLayout />}>
               <Route path="" element={<Home />} />
             </Route>
-            <Route path="/detalhes" element={<RoutesLayout />}>
+            <Route path="/detalhes/:id" element={<RoutesLayout />}>
               <Route path="" element={<PetDetails />} />
             </Route>
             <Route path="/cadastrar-pet" element={<RoutesLayout />}>
+              <Route path="" element={<MaintainPet />} />
+            </Route>
+            <Route path="/editar-pet/:id" element={<RoutesLayout />}>
               <Route path="" element={<MaintainPet />} />
             </Route>
             <Route path="/perfil" element={<RoutesLayout />}>

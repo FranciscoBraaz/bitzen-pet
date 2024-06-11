@@ -1,6 +1,16 @@
 import { AxiosResponse } from "axios"
 import { api } from "./api"
 
+interface GetPetDetailsProps {
+  signal: AbortSignal
+  id: string
+}
+
+interface GetPetDetailsResponse {
+  data: PetData
+  message: string
+}
+
 interface GetPetsProps {
   signal: AbortSignal
   search: string
@@ -9,8 +19,9 @@ interface GetPetsProps {
 interface PetData {
   id: string
   name: string
-  age: string
+  birthdate: string
   color: string
+  description: string
   image_url: string
 }
 
@@ -26,7 +37,7 @@ export async function getPets({ signal, search }: GetPetsProps) {
       { signal },
     )
 
-    return data.data
+    return data.data.data
   } catch (error) {
     console.error(error)
   }
@@ -58,6 +69,21 @@ export async function createPet({
         "Content-Type": "multipart/form-data",
       },
     })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getPetById({ signal, id }: GetPetDetailsProps) {
+  try {
+    const response: AxiosResponse<GetPetDetailsResponse> = await api.get(
+      `api/pets/${id}`,
+      {
+        signal,
+      },
+    )
+
+    return response.data
   } catch (error) {
     console.error(error)
   }
