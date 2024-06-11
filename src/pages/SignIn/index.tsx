@@ -56,7 +56,7 @@ function SignIn() {
                 type="password"
               />
             </Form.Item>
-            <Flex justify="space-between">
+            <Flex justify="space-between" className="sign__actions">
               <Form.Item name="remember" valuePropName="checked">
                 <Checkbox defaultChecked>Manter conectado</Checkbox>
               </Form.Item>

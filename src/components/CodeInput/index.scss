@@ -19,3 +19,15 @@
     border: 1px solid $primary;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .code-input-container {
+    gap: 16px;
+  }
+
+  .code-input {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}

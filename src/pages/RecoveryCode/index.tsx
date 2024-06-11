@@ -1,4 +1,3 @@
-import React from "react"
 import { Layout, Typography } from "antd"
 import { FormWrapper } from "../../components/FormWrapper"
 

@@ -1,12 +1,16 @@
-import React from "react"
-
 // Custom hooks
 import { useCodeInput } from "./hooks/useCodeInput"
 
 // Styles
 import "./index.scss"
 
-export function CodeInput({ length, onComplete }) {
+export function CodeInput({
+  length,
+  onComplete,
+}: {
+  length: number
+  onComplete: (value: string) => void
+}) {
   const { values, inputsRef, handleChange, handleKeyDown, handlePaste } =
     useCodeInput({ length, onComplete })
 
@@ -16,7 +20,7 @@ export function CodeInput({ length, onComplete }) {
         <input
           key={index}
           type="text"
-          maxLength="1"
+          maxLength={1}
           value={value}
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}

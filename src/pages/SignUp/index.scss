@@ -30,3 +30,10 @@
     text-decoration: underline;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .sign-up__flex-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
