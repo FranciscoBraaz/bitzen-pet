@@ -32,14 +32,15 @@ interface PetsResponse {
 
 export async function getPets({ signal, search }: GetPetsProps) {
   try {
-    const { data }: AxiosResponse<PetsResponse> = await api.get(
+    const response: AxiosResponse<PetsResponse> = await api.get(
       `api/pets?search=${search}`,
       { signal },
     )
 
-    return data.data.data
+    return response.data.data
   } catch (error) {
     console.error(error)
+    throw error
   }
 }
 
@@ -71,6 +72,44 @@ export async function createPet({
     })
   } catch (error) {
     console.error(error)
+    throw error
+  }
+}
+
+export async function updatePet({
+  id,
+  name,
+  color,
+  birthdate,
+  description,
+  image,
+}: {
+  id: string
+  name: string
+  color: string
+  birthdate: string
+  description: string
+  image: File | undefined
+}) {
+  const formData = new FormData()
+  formData.append("name", name)
+  formData.append("color", color)
+  formData.append("birthdate", birthdate)
+  formData.append("description", description)
+  formData.append("_method", "PUT")
+  if (image) {
+    formData.append("image", image)
+  }
+
+  try {
+    await api.post(`api/pets/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+  } catch (error) {
+    console.error(error)
+    throw error
   }
 }
 
