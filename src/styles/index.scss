@@ -10,3 +10,11 @@
 .ant-form-item {
   margin-bottom: 0px;
 }
+
+.ant-modal-footer > button:last-child {
+  background-color: #e93939;
+
+  &:hover {
+    background-color: #e93939 !important;
+  }
+}

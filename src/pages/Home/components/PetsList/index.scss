@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.scss";
+
 .pets-list {
   width: 100%;
   padding-top: 24px;
@@ -13,6 +15,16 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+  }
+
+  & > div {
+    display: flex;
+    gap: 4px;
+
+    & > span {
+      font-size: 13px;
+      color: $primary;
+    }
   }
 }
 

@@ -127,3 +127,12 @@ export async function getPetById({ signal, id }: GetPetDetailsProps) {
     console.error(error)
   }
 }
+
+export async function deletePet({ id }: { id: string }) {
+  try {
+    await api.delete(`api/pets/${id}`)
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+}

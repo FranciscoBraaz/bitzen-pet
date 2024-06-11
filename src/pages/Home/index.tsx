@@ -19,7 +19,10 @@ import "./index.scss"
 export function Home() {
   const { userData } = useAuth()
   const { search, handleSearch } = useSearch()
-  const { data, isLoading, isError } = useGetPets(search, userData?.token)
+  const { data, isLoading, isFetching, isError } = useGetPets(
+    search,
+    userData?.token,
+  )
   const navigate = useNavigate()
 
   return (
@@ -40,7 +43,7 @@ export function Home() {
         {isError && (
           <Typography.Text type="danger">Erro ao buscar pets</Typography.Text>
         )}
-        <PetsList data={data} isLoading={isLoading} />
+        <PetsList data={data} isLoading={isLoading} isFetching={isFetching} />
       </Flex>
     </div>
   )
