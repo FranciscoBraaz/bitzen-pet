@@ -8,7 +8,7 @@ interface TextAreaProps {
   placeholder: string
 }
 
-export function TextArea({ label, placeholder }: TextAreaProps) {
+export function TextArea({ label, placeholder, ...props }: TextAreaProps) {
   return (
     <div className="text-area">
       <p>{label}</p>
@@ -19,6 +19,7 @@ export function TextArea({ label, placeholder }: TextAreaProps) {
           minRows: 6,
           maxRows: 10,
         }}
+        {...props}
       />
     </div>
   )

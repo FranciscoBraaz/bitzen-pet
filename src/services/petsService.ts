@@ -31,3 +31,34 @@ export async function getPets({ signal, search }: GetPetsProps) {
     console.error(error)
   }
 }
+
+export async function createPet({
+  name,
+  color,
+  birthdate,
+  description,
+  image,
+}: {
+  name: string
+  color: string
+  birthdate: string
+  description: string
+  image: File
+}) {
+  const formData = new FormData()
+  formData.append("name", name)
+  formData.append("color", color)
+  formData.append("birthdate", birthdate)
+  formData.append("description", description)
+  formData.append("image", image)
+
+  try {
+    await api.post("api/pets", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}

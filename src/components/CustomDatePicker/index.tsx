@@ -3,11 +3,16 @@ import { DatePicker } from "antd"
 // Styles
 import "./index.scss"
 
-export function CustomDatePicker({ label }: { label: string }) {
+export function CustomDatePicker({ label, ...props }: { label: string }) {
   return (
     <div className="custom-date-picker">
       <p>{label}</p>
-      <DatePicker />
+      <DatePicker
+        format="DD/MM/YYYY"
+        {...props}
+        defaultValue={undefined}
+        placeholder="Selecione"
+      />
     </div>
   )
 }

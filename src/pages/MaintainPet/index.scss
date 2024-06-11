@@ -25,6 +25,9 @@
   }
 
   & form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
     padding: 40px 44px;
     background-color: #fff;
     border-radius: 8px;
@@ -65,6 +68,12 @@
     & path {
       stroke: $neutral-700;
     }
+  }
+}
+
+.maintain-pet__form-container {
+  & > button {
+    height: 48px;
   }
 }
 

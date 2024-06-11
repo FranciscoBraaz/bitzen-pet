@@ -1,4 +1,5 @@
 import { Button, Flex, Typography } from "antd"
+import { useNavigate } from "react-router-dom"
 
 // Assets
 import PlusCircle from "../../assets/plus-circle.svg?react"
@@ -19,6 +20,7 @@ export function Home() {
   const { userData } = useAuth()
   const { search, handleSearch } = useSearch()
   const { data, isLoading, isError } = useGetPets(search, userData?.token)
+  const navigate = useNavigate()
 
   return (
     <div className="home">
@@ -30,6 +32,7 @@ export function Home() {
             icon={<PlusCircle />}
             iconPosition="start"
             className="home__actions__new-pet"
+            onClick={() => navigate("/cadastrar-pet")}
           >
             Cadastrar pet
           </Button>
