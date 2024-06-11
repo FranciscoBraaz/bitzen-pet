@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# Bitzen pet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Sobre o projeto
+A aplicação desenvolvida com o objetivo de praticar os conhecimentos em SOLID e Typescript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  🔽 Veja funcionando: [Bitzen pet](https://diversifind.netlify.app/)
 
-## Expanding the ESLint configuration
+### Tecnologias utilizadas
+- ReactJs
+- TypeScript
+- React Query
+- Ant Design
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 👷  Executando o projeto
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+ #### Baixando repositório para sua máquina
+    # Clone o repositório com:
+    git clone https://github.com/FranciscoBraaz/bitzen-pet.git
+    
+    # Navegue para a pasta raíz com:
+    cd podcaster
+    
+   #### Iniciando aplicação
+   
+    # Baixar as dependências:
+    npm i 
+    
+    # Iniciar aplicação web:
+    npm run dev
