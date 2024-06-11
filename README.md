@@ -2,7 +2,7 @@
 
 
 ## Sobre o projeto
-A aplicação desenvolvida com o objetivo de praticar os conhecimentos em SOLID e Typescript.
+Aplicação desenvolvida com o objetivo de praticar os conhecimentos em SOLID e Typescript.
 
 ##  🔽 Veja funcionando: [Bitzen pet](https://btizen-pet.netlify.app/)
 
